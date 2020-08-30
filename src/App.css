@@ -1,0 +1,18 @@
+.Red{
+    color: red;
+}
+.recovered{
+    color:green;
+}
+.blue{
+    color:lightseagreen
+}
+.yellow{
+    color:orange;
+}
+.header{
+    text-align: center;
+}
+.covidpic{
+    width:100px
+}
