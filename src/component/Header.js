@@ -1,22 +1,17 @@
-import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import covid from '../covidpic.jpg'
-import '../App.css';
-const useStyles = makeStyles((theme) => ({
- 
-  title: {
-     textAlign:"center"
-  },
- 
- 
-}));
-
-export default function Header() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.title}>
-            <h1>C<img src={covid} id="covidpic" width={40} height={25} />VID-19 </h1>
-    </div>
-  );
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles({
+    root: {
+        textAlign:"center",
+     
+    },
+});
+export const Header = () => {
+  
+    const classes = useStyles();
+    return (
+        <div>
+            <h1 className={classes.root}>COVID 19 TRACKER APP</h1>
+        </div>
+    )
 }

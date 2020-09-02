@@ -1,44 +1,25 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Header from './component/Header';
-import GlobalData from './component/GlobalData';
-import Globalchart from './component/GlobalChart';
-import Country from './component/CountryState';
-import Countrychart from './component/Countrychart';
-import Countryinfo from './component/CountryInfo'
+import SelectPlace from './component/SelectPlace';
+import {Header} from './component/Header';
 function App() {
-  let  [global,setGlobal] = useState([{}]);
- 
+  let [getData, setgetData] = useState([{}])
   useEffect(() => {
-     
-      async function getData(){
-        const responce=await fetch("https://api.thevirustracker.com/free-api?global=stats");
-        const data=await responce.json();
-        delete data.results[0].source
-        console.log(data.results[0]);
-        setGlobal(data.results[0]);
-        
-      }
-      getData()
-
+    async function getApiData() {
+      const data = await fetch("https://coronavirus-19-api.herokuapp.com/countries");
+      const result = await data.json();
+      console.log(result)
+      setgetData(result);
+    }
+    getApiData();
+   
   }, []);
 
   return (
     <div >
-         <Header />
-         <GlobalData global={global}/>
-          <Country>
-            <Countryinfo/>
-            <Countrychart/>
-          </Country>
-        
-         
-         
-         
-         
-         {/* <Countryinfo />  */}
-          {/* <Countrychart />  */}
-   
+      <Header/>
+      <SelectPlace selectOpt={getData}  />
+ 
     </div>
   );
 }
